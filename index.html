@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wenzuo's CC Lab</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        <!-- 首页 -->
+        <div id="frame1" class="frame-content active">
+            <h1>Wenzuo's Art Lab</h1>
+            <div class="link-flex">
+                <a href="#lab" class="frame-link" onclick="showFrame(2)">
+                    <h2>CC LAB WORKS</h2>
+                </a>
+                <a href="#arts" class="frame-link" onclick="showFrame(3)">
+                    <h2>OTHER ARTS</h2>
+                </a>
+                <a href="#advanced" class="frame-link" onclick="showFrame(4)">
+                    <h2>ADVANCED CC LAB</h2>
+                </a>
+                <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1881652386/size=large/bgcol=333333/linkcol=2ebd35/tracklist=false/artwork=small/track=1274237663/transparent=true/" seamless><a href="https://apollorecords.bandcamp.com/album/selected-ambient-works-85-92">Selected Ambient Works 85-92 by Aphex Twin</a></iframe>
+            </div>
+        </div>
+
+        <!-- 作品展示容器 -->
+        <div id="frameContent" class="frame-content">
+            <h1 class="frame-title" id="contentTitle"></h1>
+            <div id="dynamicContent"></div>
+            <a href="#" class="back-link" onclick="showFrame(1)">BACK TO INDEX</a>
+        </div>
+    </div>
+
+    <script>
+        const works = {
+            ccLab: [
+                {
+                    title: "Airpods Sketch",
+                    url: "https://editor.p5js.org/xiaw902/sketches/aUWILAZv1D"
+                },
+                {
+                    title: "Robot Face",
+                    url: "https://editor.p5js.org/xiaw902/sketches/DsROBvG5ty"
+                },
+                {
+                    title: "Interactive Clock",
+                    url: "https://editor.p5js.org/xiaw902/sketches/0X2-awcLl"
+                },
+                {
+                    title: "Visual Spinning",
+                    url: "https://editor.p5js.org/xiaw902/sketches/35FCvTbxh"
+                },
+                {
+                    title: "My Character",
+                    url: "https://editor.p5js.org/xiaw902/sketches/GDFKCWAw4"
+                },
+                {
+                    title: "Steps Data",
+                    url: "https://editor.p5js.org/xiaw902/sketches/c4Q-WwOWM"
+                },
+                {
+                    title: "Catching Fish",
+                    url: "https://editor.p5js.org/xiaw902/sketches/ClLsQTdpj"
+                },
+                {
+                    title: "Tomato", 
+                    url: "https://editor.p5js.org/xiaw902/sketches/97xIbA6OX"
+                }
+            ],
+            otherArts: [
+                {
+                    title: "Old West",
+                    type: "image",
+                    url: "https://i.postimg.cc/W1sfQGR3/1131738897014-pic-hd.jpg",
+                    description: "This is a jacket I mad for my fashion studio. As a fashion editor, I'd spotlight this collection for its cool blend of hip-hop flair and Wild West charm. The story behind it is all about taking classic denim jackets and giving them a fresh twist with real old west patches. It's like a journey through time, mixing history with modern street style."
+                },
+                {
+                    title: "###",
+                    type: "iframe",
+                    url: "#",
+                    description: "########"
+                }
+            ],
+            advancedCCLab: [
+        {
+            title: "Advanced Project 1",
+            url: "https://i.pinimg.com/736x/49/58/e7/4958e7576d1346a88d8d8a1c75eb9371.jpg"
+        },
+        {
+            title: "Advanced Project 2",
+            url: "https://i.pinimg.com/736x/49/58/e7/4958e7576d1346a88d8d8a1c75eb9371.jpg"
+        },
+        {
+            title: "Advanced Project 3",
+            url: "https://i.pinimg.com/736x/49/58/e7/4958e7576d1346a88d8d8a1c75eb9371.jpg"
+        }
+    ]
+          
+        };
+
+        function showFrame(frameNumber) {
+            document.querySelectorAll('.frame-content').forEach(el => el.classList.remove('active'));
+            
+            const contentTitle = document.getElementById('contentTitle');
+            const dynamicContent = document.getElementById('dynamicContent');
+            dynamicContent.innerHTML = '';
+
+            if(frameNumber === 1) {
+                document.getElementById('frame1').classList.add('active');
+            } else {
+                const frameContent = document.getElementById('frameContent');
+                frameContent.classList.add('active');
+                
+                const gallery = document.createElement('div');
+                gallery.className = 'project-gallery';
+
+                if(frameNumber === 2) {
+                    contentTitle.textContent = 'CC LAB WORKS';
+                    works.ccLab.forEach(work => {
+                        gallery.innerHTML += `
+                            <article class="project-item">
+                                <h3 class="project-title">${work.title}</h3>
+                                <div class="project-preview">
+                                    <iframe 
+                                        class="p5-iframe" 
+                                        src="${work.url}"
+                                        scrolling="no"
+                                    ></iframe>
+                                </div>
+                            </article>
+                        `;
+                    });
+                } 
+                else if(frameNumber === 3) {
+                    contentTitle.textContent = 'OTHER ARTS';
+                    works.otherArts.forEach(work => {
+                        let mediaContent;
+                    if(work.url === '#') {
+                        mediaContent = '<div class="art-placeholder">COMING SOON</div>';
+                    } else {
+                        // 根据类型创建不同内容
+                        if(work.type === 'image') {
+                            mediaContent = `<img src="${work.url}" alt="${work.title}" class="art-image"style="width: auto; height: 395px;">`;
+                        } else {
+                            mediaContent = `<iframe class="p5-iframe" src="${work.url}"></iframe>`;
+                        }
+                    }
+                    
+                    gallery.innerHTML += `
+                        <article class="project-item">
+                            <h3 class="project-title">${work.title}</h3>
+                            <div class="project-preview">
+                                ${mediaContent}
+                                </div>
+                                ${work.description ? `<p class="project-description">${work.description}</p>` : ''}
+                            </article>
+                        `;
+                    });
+                }
+                else if(frameNumber === 4) {
+            contentTitle.textContent = 'ADVANCED CC LAB';
+            works.advancedCCLab.forEach(work => {
+                gallery.innerHTML += `
+                    <article class="project-item">
+                        <h3 class="project-title">${work.title}</h3>
+                        <div class="project-preview">
+                            <iframe 
+                                class="p5-iframe" 
+                                src="${work.url}"
+                                scrolling="no"
+                            ></iframe>
+                        </div>
+                    </article>
+                `;
+            });
+        }
+
+                dynamicContent.appendChild(gallery);
+            }
+        }
+
+        window.onload = () => {
+            const hashMap = {'#lab':2, '#arts':3, '#advanced':4};
+            const targetFrame = hashMap[window.location.hash];
+            if(targetFrame) showFrame(targetFrame);
+        }
+    </script>
+</body>
+</html>
