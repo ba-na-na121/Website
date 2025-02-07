@@ -9,7 +9,7 @@
 <body>
     
     <div class="container">
-        <!-- 首页 -->
+        <!-- homepage -->
         <div id="frame1" class="frame-content active">
             <h1>Wenzuo's Art Lab</h1>
             <div class="link-flex">
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <!-- 作品展示容器 -->
+        <!-- content -->
         <div id="frameContent" class="frame-content">
             <h1 class="frame-title" id="contentTitle"></h1>
             <div id="dynamicContent"></div>
@@ -141,7 +141,7 @@
                     if(work.url === '#') {
                         mediaContent = '<div class="art-placeholder">COMING SOON</div>';
                     } else {
-                        // 根据类型创建不同内容
+                        // different types
                         if(work.type === 'image') {
                             mediaContent = `<img src="${work.url}" alt="${work.title}" class="art-image"style="width: auto; height: 395px;">`;
                         } else {
