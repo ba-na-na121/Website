@@ -65,9 +65,11 @@ body {
     border: 2px solid #00ff00;
     padding: 2rem;
     background: #00000055;
-    
-    
-    
+    width: fit-content;       /* 新增：根据内容自适应宽度 */
+    margin: 0 auto;           /* 新增：水平居中 */
+    display: flex;            /* 新增：启用flex布局 */
+    flex-direction: column;  /* 新增：垂直排列子元素 */
+    align-items: center;      /* 新增：子元素水平居中 */
 }
 
 .project-title {
@@ -77,13 +79,15 @@ body {
     text-align: center;
 }
 
+/* 调整预览容器 */
 .project-preview {
     width: 630px;
     height: 630px;
     border: 2px solid #00ff00;
     background: #000;
-    
-   
+    display: flex;            /* 新增：启用flex布局 */
+    justify-content: center;  /* 新增：水平居中内容 */
+    align-items: center;     /* 新增：垂直居中内容 */
 }
 
 .p5-iframe {
@@ -109,20 +113,26 @@ body {
     background: #00ff0022;
 }
 
-.project-description {
-    margin-top: 1.5rem;
-    font-size: 0.8em;
-    color: #00ff99;
+
+/* 确保图片居中 */
+.art-image {
+    width: auto;
+    height: 395px;
+    display: block;          /* 新增：转换为块级元素 */
+    margin: 0 auto;         /* 新增：水平居中 */
 }
 
+/* 调整占位符容器 */
 .art-placeholder {
     display: flex;
     height: 100%;
+    width: 100%;           /* 新增：填满父容器 */
     align-items: center;
     justify-content: center;
     font-size: 1.2em;
     color: #00ff0077;
 }
+
 
 .frame-content {
     display: none;
