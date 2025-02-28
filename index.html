@@ -5,11 +5,10 @@
     <title>Wenzuo's CC Lab</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-   
+</head>
 <body>
-    
     <div class="container">
-        <!-- homepAge -->
+        <!-- 首页 -->
         <div id="frame1" class="frame-content active">
             <h1>Wenzuo's Art Lab</h1>
             <div class="link-flex">
@@ -22,15 +21,30 @@
                 <a href="#advanced" class="frame-link" onclick="showFrame(4)">
                     <h2>ADVANCED CC LAB</h2>
                 </a>
-                <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1881652386/size=large/bgcol=333333/linkcol=2ebd35/tracklist=false/artwork=small/track=1274237663/transparent=true/" seamless><a href="https://apollorecords.bandcamp.com/album/selected-ambient-works-85-92">Selected Ambient Works 85-92 by Aphex Twin</a></iframe>
-                
+                <iframe style="border: 0; width: 100%; height: 120px;" 
+                        src="https://bandcamp.com/EmbeddedPlayer/album=1881652386/size=large/bgcol=333333/linkcol=2ebd35/tracklist=false/artwork=small/track=1274237663/transparent=true/" 
+                        seamless>
+                    <a href="https://apollorecords.bandcamp.com/album/selected-ambient-works-85-92">Selected Ambient Works 85-92 by Aphex Twin</a>
+                </iframe>
             </div>
         </div>
 
-        <!-- content -->
+        <!-- 内容框架 -->
         <div id="frameContent" class="frame-content">
             <h1 class="frame-title" id="contentTitle"></h1>
             <div id="dynamicContent"></div>
+            <a href="#" class="back-link" onclick="showFrame(1)">BACK TO INDEX</a>
+        </div>
+
+        <!-- Advanced CC Lab -->
+        <div id="frame4" class="frame-content">
+            <div class="advanced-container">
+                <nav class="advanced-nav">
+                    <a href="#classwork" class="nav-link active" onclick="showAdvancedSection('classwork')">CLASSWORK</a>
+                    <a href="#homework" class="nav-link" onclick="showAdvancedSection('homework')">HOMEWORK</a>
+                </nav>
+                <div class="advanced-content" id="advancedContent"></div>
+            </div>
             <a href="#" class="back-link" onclick="showFrame(1)">BACK TO INDEX</a>
         </div>
     </div>
@@ -38,38 +52,14 @@
     <script>
         const works = {
             ccLab: [
-                {
-                    title: "Airpods Sketch",
-                    url: "https://editor.p5js.org/xiaw902/sketches/aUWILAZv1D"
-                },
-                {
-                    title: "Robot Face",
-                    url: "https://editor.p5js.org/xiaw902/sketches/DsROBvG5ty"
-                },
-                {
-                    title: "Interactive Clock",
-                    url: "https://editor.p5js.org/xiaw902/sketches/0X2-awcLl"
-                },
-                {
-                    title: "Visual Spinning",
-                    url: "https://editor.p5js.org/xiaw902/sketches/35FCvTbxh"
-                },
-                {
-                    title: "My Character",
-                    url: "https://editor.p5js.org/xiaw902/sketches/GDFKCWAw4"
-                },
-                {
-                    title: "Steps Data",
-                    url: "https://editor.p5js.org/xiaw902/sketches/c4Q-WwOWM"
-                },
-                {
-                    title: "Catching Fish",
-                    url: "https://editor.p5js.org/xiaw902/sketches/ClLsQTdpj"
-                },
-                {
-                    title: "Tomato", 
-                    url: "https://editor.p5js.org/xiaw902/sketches/97xIbA6OX"
-                }
+                { title: "Airpods Sketch", url: "https://editor.p5js.org/xiaw902/sketches/aUWILAZv1D" },
+                { title: "Robot Face", url: "https://editor.p5js.org/xiaw902/sketches/DsROBvG5ty" },
+                { title: "Interactive Clock", url: "https://editor.p5js.org/xiaw902/sketches/0X2-awcLl" },
+                { title: "Visual Spinning", url: "https://editor.p5js.org/xiaw902/sketches/35FCvTbxh" },
+                { title: "My Character", url: "https://editor.p5js.org/xiaw902/sketches/GDFKCWAw4" },
+                { title: "Steps Data", url: "https://editor.p5js.org/xiaw902/sketches/c4Q-WwOWM" },
+                { title: "Catching Fish", url: "https://editor.p5js.org/xiaw902/sketches/ClLsQTdpj" },
+                { title: "Tomato", url: "https://editor.p5js.org/xiaw902/sketches/97xIbA6OX" }
             ],
             otherArts: [
                 {
@@ -85,60 +75,56 @@
                     description: "########"
                 }
             ],
-            advancedCCLab: [
-        {
-            title: "Typography demo1",
-            url: "https://editor.p5js.org/xiaw902/full/-jqmIp-Om"
-        },
-        {
-            title: "Typography demo2",
-            url: "https://editor.p5js.org/xiaw902/full/4bMOF9bZG"
-        },
-        {
-            title: "Typography demo3",
-            url: "https://editor.p5js.org/xiaw902/full/wl2T9KpRS"
-        },
-        {
-            title: "Typography demo4",
-            url: "https://editor.p5js.org/xiaw902/full/xrYZ6T6FP"
-        },
-        {
-            title: "Typography demo5",
-            url: "https://editor.p5js.org/xiaw902/full/99fB8et4T"
-        },
-        {
-            title: "Typography demo6",
-            url: "https://editor.p5js.org/xiaw902/full/4WIu2TfeT"
-        },
-        {
-            title: "Typography demo7",
-            url: "https://editor.p5js.org/xiaw902/full/Pm76Cq2Ed"
-        },
-        {
-            title: "Typography demo8",
-            url: "https://editor.p5js.org/xiaw902/full/m6epi1nzh"
-        },
-        {
-            title: "Typography demo9",
-            url: "https://editor.p5js.org/xiaw902/full/p-lOL0EOQ"
-        }
-    ]
-
-          
+            advancedCCLab: {
+                classwork: [
+                    {title: "TextToPoint Practice", url: "https://editor.p5js.org/xiaw902/full/vbV_hKq_N"},
+                    
+                ],
+                homework: [
+                { title: "Typography 1", url: "https://editor.p5js.org/xiaw902/full/-jqmIp-Om" },
+                    { title: "Typography 2", url: "https://editor.p5js.org/xiaw902/full/4bMOF9bZG" },
+                    { title: "Typography 3", url: "https://editor.p5js.org/xiaw902/full/wl2T9KpRS" },
+                    { title: "Typography 4", url: "https://editor.p5js.org/xiaw902/full/xrYZ6T6FP" },
+                    { title: "Typography 5", url: "https://editor.p5js.org/xiaw902/full/99fB8et4T" },
+                    { title: "Typography 6", url: "https://editor.p5js.org/xiaw902/full/4WIu2TfeT" },
+                    { title: "Typography 7", url: "https://editor.p5js.org/xiaw902/full/Pm76Cq2Ed" },
+                    { title: "Typography 8", url: "https://editor.p5js.org/xiaw902/full/m6epi1nzh" },
+                    { title: "Typography 9", url: "https://editor.p5js.org/xiaw902/full/p-lOL0EOQ" },
+                    
+                    // 可在此处添加作业内容
+                ]
+            }
         };
+
+        function showAdvancedSection(section) {
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const contentDiv = document.getElementById('advancedContent');
+            contentDiv.innerHTML = works.advancedCCLab[section].map(work => `
+                <article class="project-item">
+                    <h3 class="project-title">${work.title}</h3>
+                    <div class="project-preview">
+                        <iframe class="p5-iframe" src="${work.url}" scrolling="no"></iframe>
+                    </div>
+                </article>
+            `).join('');
+        }
 
         function showFrame(frameNumber) {
             document.querySelectorAll('.frame-content').forEach(el => el.classList.remove('active'));
-            
             const contentTitle = document.getElementById('contentTitle');
             const dynamicContent = document.getElementById('dynamicContent');
-            dynamicContent.innerHTML = '';
-
+            
             if(frameNumber === 1) {
                 document.getElementById('frame1').classList.add('active');
+            } else if(frameNumber === 4) {
+                document.getElementById('frame4').classList.add('active');
+                showAdvancedSection('classwork');
             } else {
                 const frameContent = document.getElementById('frameContent');
                 frameContent.classList.add('active');
+                dynamicContent.innerHTML = '';
                 
                 const gallery = document.createElement('div');
                 gallery.className = 'project-gallery';
@@ -150,11 +136,7 @@
                             <article class="project-item">
                                 <h3 class="project-title">${work.title}</h3>
                                 <div class="project-preview">
-                                    <iframe 
-                                        class="p5-iframe" 
-                                        src="${work.url}"
-                                        scrolling="no"
-                                    ></iframe>
+                                    <iframe class="p5-iframe" src="${work.url}" scrolling="no"></iframe>
                                 </div>
                             </article>
                         `;
@@ -163,47 +145,23 @@
                 else if(frameNumber === 3) {
                     contentTitle.textContent = 'OTHER ARTS';
                     works.otherArts.forEach(work => {
-                        let mediaContent;
-                    if(work.url === '#') {
-                        mediaContent = '<div class="art-placeholder">COMING SOON</div>';
-                    } else {
-                        // different types
-                        if(work.type === 'image') {
-                            mediaContent = `<img src="${work.url}" alt="${work.title}" class="art-image"style="width: auto; height: 395px;">`;
-                        } else {
-                            mediaContent = `<iframe class="p5-iframe" src="${work.url}"></iframe>`;
-                        }
-                    }
-                    
-                    gallery.innerHTML += `
-                        <article class="project-item">
-                            <h3 class="project-title">${work.title}</h3>
-                            <div class="project-preview">
-                                ${mediaContent}
+                        let mediaContent = work.url === '#' ? 
+                            '<div class="art-placeholder">COMING SOON</div>' :
+                            work.type === 'image' ?
+                            `<img src="${work.url}" alt="${work.title}" class="art-image">` :
+                            `<iframe class="p5-iframe" src="${work.url}"></iframe>`;
+                        
+                        gallery.innerHTML += `
+                            <article class="project-item">
+                                <h3 class="project-title">${work.title}</h3>
+                                <div class="project-preview">
+                                    ${mediaContent}
                                 </div>
                                 ${work.description ? `<p class="project-description">${work.description}</p>` : ''}
                             </article>
                         `;
                     });
                 }
-                else if(frameNumber === 4) {
-            contentTitle.textContent = 'ADVANCED CC LAB';
-            works.advancedCCLab.forEach(work => {
-                gallery.innerHTML += `
-                    <article class="project-item">
-                        <h3 class="project-title">${work.title}</h3>
-                        <div class="project-preview">
-                            <iframe 
-                                class="p5-iframe" 
-                                src="${work.url}"
-                                scrolling="no"
-                            ></iframe>
-                        </div>
-                    </article>
-                `;
-            });
-        }
-
                 dynamicContent.appendChild(gallery);
             }
         }

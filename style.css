@@ -1,5 +1,5 @@
- /* style.css */
- * {
+/* style.css */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -22,17 +22,16 @@ body {
     background: #000;
     min-height: 90vh;
     position: relative;
-    
 }
 
 .link-flex {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     margin-top: 3rem;
 }
 
 .frame-link {
-    flex: 1 1 300px;
     color: #00ff00;
     text-decoration: none;
     padding: 2rem;
@@ -50,11 +49,54 @@ body {
     transform: scale(1.02);
 }
 
+/* Advanced Lab 样式 */
+.advanced-container {
+    display: flex;
+    gap: 30px;
+    min-height: 70vh;
+}
+
+.advanced-nav {
+    flex: 0 0 200px;
+    border-right: 3px solid #00ff00;
+    padding: 20px 0;
+}
+
+.nav-link {
+    display: block;
+    color: #00ff00;
+    text-decoration: none;
+    padding: 1.5rem;
+    margin: 1rem 15px;
+    border: 2px solid #00ff00;
+    text-align: center;
+    transition: all 0.3s;
+    font-size: 0.9em;
+}
+
+.nav-link:hover {
+    background: #00ff0011;
+    transform: scale(1.05);
+}
+
+.nav-link.active {
+    background: #00ff0022;
+    color: #00ff88;
+    box-shadow: 0 0 15px #00ff0088;
+}
+
+.advanced-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 20px;
+}
+
+/* 通用项目样式 */
 .project-gallery {
     display: flex;
     flex-direction: column;
     gap: 4rem;
-    padding: 2rem;
+    padding: 2rem 0;
     height: calc(100vh - 200px);
     overflow-y: auto;
     margin-bottom: 80px;
@@ -65,11 +107,7 @@ body {
     border: 2px solid #00ff00;
     padding: 2rem;
     background: #00000055;
-    width: fit-content;       /* 新增：根据内容自适应宽度 */
-    margin: 0 auto;           /* 新增：水平居中 */
-    display: flex;            /* 新增：启用flex布局 */
-    flex-direction: column;  /* 新增：垂直排列子元素 */
-    align-items: center;      /* 新增：子元素水平居中 */
+    width: 100%;
 }
 
 .project-title {
@@ -79,15 +117,12 @@ body {
     text-align: center;
 }
 
-/* 调整预览容器 */
 .project-preview {
     width: 630px;
     height: 630px;
     border: 2px solid #00ff00;
     background: #000;
-    display: flex;            /* 新增：启用flex布局 */
-    justify-content: center;  /* 新增：水平居中内容 */
-    align-items: center;     /* 新增：垂直居中内容 */
+    margin: 0 auto;
 }
 
 .p5-iframe {
@@ -113,32 +148,40 @@ body {
     background: #00ff0022;
 }
 
-
-/* 确保图片居中 */
-.art-image {
-    width: auto;
-    height: 395px;
-    display: block;          /* 新增：转换为块级元素 */
-    margin: 0 auto;         /* 新增：水平居中 */
-}
-
-/* 调整占位符容器 */
+/* 其他艺术部分样式 */
 .art-placeholder {
     display: flex;
     height: 100%;
-    width: 100%;           /* 新增：填满父容器 */
     align-items: center;
     justify-content: center;
     font-size: 1.2em;
     color: #00ff0077;
+    text-align: center;
 }
 
+.art-image {
+    width: auto;
+    height: 395px;
+    display: block;
+    margin: 0 auto;
+}
+
+.project-description {
+    margin-top: 1.5rem;
+    font-size: 0.8em;
+    color: #00ff99;
+    text-align: center;
+    max-width: 630px;
+}
 
 .frame-content {
     display: none;
-    
 }
 
 .active {
     display: block;
+}
+
+#frame4 .back-link {
+    bottom: 30px;
 }
