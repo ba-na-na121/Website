@@ -5,6 +5,20 @@
     <title>Wenzuo's CC Lab</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+      .project-thumbnail {
+        width: 100%;
+        max-width: 640px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 6px;
+        transition: transform 0.3s ease;
+      }
+      .project-thumbnail:hover {
+        transform: scale(1.03);
+      }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -93,6 +107,7 @@
                     {title: "Experimental Camera", url: "https://editor.p5js.org/xiaw902/sketches/bl7N_9cMV" },
                     
                     // 可在此添加作业
+                    { title: "Weather Generator", url: "https://ba-na-na121.github.io/WeatherGenerator/" }
                 ]
             }
         };
@@ -100,16 +115,31 @@
         function showAdvancedSection(section) {
             document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
             event.target.classList.add('active');
-            
+
             const contentDiv = document.getElementById('advancedContent');
-            contentDiv.innerHTML = works.advancedCCLab[section].map(work => `
-                <article class="project-item">
-                    <h3 class="project-title">${work.title}</h3>
-                    <div class="project-preview">
+            contentDiv.innerHTML = works.advancedCCLab[section].map(work => {
+              if (work.title === "Weather Generator") {
+                return `
+                  <article class="project-item">
+                    <a href="${work.url}" target="_blank" class="project-link">
+                      <img src="https://api.microlink.io/?url=${encodeURIComponent(work.url)}&screenshot=true&meta=false&embed=screenshot.url" alt="${work.title}" class="project-thumbnail">
+                      <h3 class="project-title">${work.title}</h3>
+                    </a>
+                  </article>
+                `;
+              } else {
+                return `
+                  <article class="project-item">
+                    <a href="${work.url}" target="_blank" class="project-link">
+                      <div class="project-preview">
                         <iframe class="p5-iframe" src="${work.url}" scrolling="no"></iframe>
-                    </div>
-                </article>
-            `).join('');
+                      </div>
+                      <h3 class="project-title">${work.title}</h3>
+                    </a>
+                  </article>
+                `;
+              }
+            }).join('');
         }
 
         function showFrame(frameNumber) {
@@ -145,23 +175,12 @@
                 } 
                 else if(frameNumber === 3) {
                     contentTitle.textContent = 'OTHER ARTS';
-                    works.otherArts.forEach(work => {
-                        let mediaContent = work.url === '#' ? 
-                            '<div class="art-placeholder">COMING SOON</div>' :
-                            work.type === 'image' ?
-                            `<img src="${work.url}" alt="${work.title}" class="art-image">` :
-                            `<iframe class="p5-iframe" src="${work.url}"></iframe>`;
-                        
-                        gallery.innerHTML += `
-                            <article class="project-item">
-                                <h3 class="project-title">${work.title}</h3>
-                                <div class="project-preview">
-                                    ${mediaContent}
-                                </div>
-                                ${work.description ? `<p class="project-description">${work.description}</p>` : ''}
-                            </article>
-                        `;
-                    });
+                    gallery.innerHTML = `
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; min-height: 60vh; text-align: center; color: #2ebd35; font-family: 'Press Start 2P', monospace; font-size: 1rem;">
+      This page has moved to:<br>
+      <a href="https://ba-na-na121.github.io/newWeb/artworks.html" target="_blank" style="color: #2ebd35; text-decoration: underline;">https://ba-na-na121.github.io/newWeb/artworks.html</a>
+    </div>
+  `;
                 }
                 dynamicContent.appendChild(gallery);
             }
